@@ -1,0 +1,70 @@
+ALGORITHM DecisionMaking
+VAR
+    year , temperature , age : INTEGER ;
+    result , isRaining : BOOLEAN ;
+    price , advice : STRING ;
+
+BEGIN
+//1. Leap Year Checker
+
+ fonction isLeapYear(year) : BOOLEAN
+ BEGIN
+    IF (year % 4 = 0) THEN
+        IF (year % 100 = 0) THEN
+            IF (year % 400 = 0) THEN
+                result := TRUE ;
+            ELSE
+                result := FALSE ;
+            END IF
+        ELSE
+            result := TRUE ;
+        END IF
+    ELSE
+        result := FALSE ;
+    END IF
+
+    RETURN result ;
+END isLeapYear 
+
+//2. Ticket Pricing
+
+ fonction TicketPrice (age) : INTEGER
+ BEGIN
+  IF age <= 12 THEN
+        price := "$10" ;
+    ELSE IF age >= 13 AND age <= 17 THEN
+        price := "$15" ;
+    ELSE
+        price := "$20" ;
+    END IF
+
+    RETURN price ;
+END TicketPrice
+
+//3. Weather Clothing Adviser
+
+ fonction clothingAdviser (temperature) : STRING
+ BEGIN  
+ IF temperature < 10 THEN
+        IF isRaining = TRUE THEN
+            advice := "Wear a heavy jacket and carry an umbrella." ;
+        ELSE
+            advice := "Wear a heavy jacket." ;
+        END IF
+    ELSE IF temperature >= 10 AND temperature < 20 THEN
+        IF isRaining = TRUE THEN
+            advice := "Wear a jacket and carry an umbrella." ;
+        ELSE
+            advice := "Wear a light jacket." ;
+        END IF
+    ELSE
+        IF isRaining = TRUE THEN
+            advice := "Wear a t-shirt and carry an umbrella." ;
+        ELSE
+            advice := "Wear a t-shirt." ;
+        END IF
+    END IF
+
+    RETURN advice ;
+ END clothingAdviser    
+END ALGORITHM

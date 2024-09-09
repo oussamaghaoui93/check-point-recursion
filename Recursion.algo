@@ -1,0 +1,51 @@
+ALGORITHM Recursion
+VAR
+ n , base, exp ,result: INTEGER ;
+ normalizedStr : STRING ;
+ results : BOOLEAN ;
+BEGIN
+//Fibonacci Sequence:
+ fonction fibonacci(n) : INTEGER
+ BEGIN
+ IF n = 0 THEN
+        result := 0 ;
+    ELSE IF n = 1 THEN
+        result := 1 ;
+    ELSE
+        result := fibonacci(n - 1) + fibonacci(n - 2) ;
+    END IF
+
+    RETURN result ;
+
+
+ END fibonacci
+
+// Palindrome Checker:
+ fonction isPalindrome(str : STRING ;  start, end : INTEGER ) : STRING
+ BEGIN
+ IF start >= end THEN
+        results := TRUE ;
+    ELSE IF str[start] != str[end] THEN
+        results := FALSE ;
+    ELSE
+        results := checkPalindrome(start + 1, end - 1) ;
+    END IF
+
+    RETURN results ;
+
+ END isPalindrome
+ 
+//Power Function:
+
+ fonction power(base,exp) : INTEGER
+BEGIN
+    IF exp = 0 THEN
+        result := 1 ;
+    ELSE
+        result := base * power(base, exp - 1) ;
+    END IF
+
+    RETURN result ;
+END power
+END ALGORITHM
+
